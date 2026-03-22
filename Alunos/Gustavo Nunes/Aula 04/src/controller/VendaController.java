@@ -133,18 +133,6 @@ public class VendaController {
         }
     }
 
-    // Cadastra nova compra
-    private void cadastraVenda() {
-        int quant = io.pedeQundidade();
-        double valUni = io.pedeValor();
-
-        double valVenda = service.calculaPreco(quant,valUni);
-        double desconto = service.calculaDesconto(quant,valVenda);
-        vendas.add(service.cadastraVenda(quant,valVenda,desconto));
-
-        io.exibeSucessoCadastro();
-    }
-
     // Lista compras realizadas
     private void listaCompras() {
 
@@ -165,6 +153,18 @@ public class VendaController {
 
         System.out.println("--------------------------------------------------------------------------");
 
+    }
+
+    // Cadastra nova compra
+    private void cadastraVenda() {
+        int quant = io.pedeQundidade();
+        double valUni = io.pedeValor();
+
+        double valVenda = service.calculaPreco(quant,valUni);
+        double desconto = service.calculaDesconto(quant,valVenda);
+        vendas.add(service.cadastraVenda(quant,valVenda,desconto));
+
+        io.exibeSucessoCadastro();
     }
 
     // Mostra menu de Cálculo

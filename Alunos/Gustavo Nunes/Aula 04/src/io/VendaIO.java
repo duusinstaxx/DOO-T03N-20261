@@ -1,5 +1,8 @@
 package io;
 
+import Entities.Venda;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class VendaIO {
@@ -11,7 +14,7 @@ public class VendaIO {
 
     // Menu inicial
     public int mostraMenuInicio(){
-        System.out.printf(LINHA_MENU +
+        System.out.println(LINHA_MENU +
                 "[1] - Cadastrar nova Venda\n" +
                 "[2] - Listar vendas cadastradas\n" +
                 "[3] - Apenas calcular\n" +
@@ -24,7 +27,7 @@ public class VendaIO {
 
     // Menu de listagem
     public int mostraMenuListagem(){
-        System.out.printf(LINHA_MENU +
+        System.out.println(LINHA_MENU +
                 "[1] - Todas as vendas\n" +
                 "[2] - Por ano\n" +
                 "[3] - Por mes\n" +
@@ -38,7 +41,7 @@ public class VendaIO {
 
     // Menu de calculo
     public int mostraMenuCalculo(){
-        System.out.printf(LINHA_MENU +
+        System.out.println(LINHA_MENU +
                 "[1] - Cálcular venda\n" +
                 "[2] - Cálcular troco\n" +
                 "[3] - Cálcular desconto\n" +
@@ -66,7 +69,28 @@ public class VendaIO {
         System.out.println("venda cadastrada com sucesso!");
     }
 
-    // Listagem de venda
+    // Lista compras realizadas
+    private void listaCompras(ArrayList<Venda> vendas) {
+
+        if (vendas.isEmpty()) {
+            System.out.println("\nNenhuma compra encontrada.");
+            return;
+        }
+
+        System.out.printf(
+                LINHA_TABELA +
+                "  %-3s   %-10s   %-10s   %-10s   %-10s   %-10s  \n" +
+                LINHA_TABELA,
+                "ID", "DATA", "QUANTIDADE", "V.TOTAL", "DESCONTO", "V.PAGO");
+
+        for (Venda m : vendas) {
+            System.out.println(m);
+        }
+
+        System.out.println(LINHA_TABELA);
+
+    }
+
 
     // Resultado de venda
     public void mostraResultadoVenda(double preco){
