@@ -22,17 +22,17 @@ public class Main {
         Cliente cliente1 = new Cliente("Carlos", 28, endereco1);
         Cliente cliente2 = new Cliente("Mariana", 32, endereco2);
         Cliente cliente3 = new Cliente("João", 24, endereco3);
-        Main.clientes = List.of(cliente1, cliente2, cliente3);
+        clientes = List.of(cliente1, cliente2, cliente3);
 
         Vendedor vendedor1 = new Vendedor("Ana", 30, "Loja A", endereco1, 2500.0);
         Vendedor vendedor2 = new Vendedor("Bruno", 27, "Loja B", endereco2, 2600.0);
         Vendedor vendedor3 = new Vendedor("Fernanda", 35, "Loja C", endereco3, 2700.0);
-        Main.vendedores = List.of(vendedor1, vendedor2, vendedor3);
+        vendedores = List.of(vendedor1, vendedor2, vendedor3);
 
         Loja loja1 = new Loja("Loja 1", "Razão Social 1", "12345678000100", endereco1, Main.vendedores, Main.clientes);
         Loja loja2 = new Loja("Loja 2", "Razão Social 2", "22345678000100", endereco2, Main.vendedores, Main.clientes);
         Loja loja3 = new Loja("Loja 3", "Razão Social 3", "32345678000100", endereco3, Main.vendedores, Main.clientes);
-        Main.lojas = List.of(loja1, loja2, loja3);
+        lojas = List.of(loja1, loja2, loja3);
 
         System.out.println("Bem vindo ao sistema de gerencia de negócio");
 
@@ -65,9 +65,11 @@ public class Main {
                     try {
                         System.out.println("Digite a quantidade do produto:");
                         int quantidade = scan.nextInt();
+                        scan.nextLine();
                         
                         System.out.println("Digite o preço do produto:");
                         double preco = scan.nextDouble();
+                        scan.nextLine();
                         
                         double total = preco * quantidade;
                         double totalcomdesc = (quantidade > 10) ? total * 0.95 : total;
@@ -148,7 +150,6 @@ public class Main {
    private static void consultationDay(List<Calculadora> vendas) {
         try {
             System.out.println("Digite a data da venda (dd/MM/yyyy):");
-            scan.nextLine(); 
             String dataConsulta = scan.nextLine();
             
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -176,7 +177,6 @@ public class Main {
     private static void consultationMonth(List<Calculadora> vendas) {
         try {
             System.out.println("Digite o mês e ano da venda (MM/yyyy):");
-            scan.nextLine(); 
             String dataConsulta = scan.nextLine();  
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate dataRef = LocalDate.parse("01/" + dataConsulta, formatter); //estou passando o dia um como padrão na busca do mês
